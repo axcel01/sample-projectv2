@@ -6,27 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import com.example.mysample.databinding.FragmentFirstBinding
+import com.example.mysample.databinding.FragmentSecondBinding
+import com.example.mysample.databinding.FragmentThirdBinding
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
-class FirstFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+class ThirdFragment : Fragment() {
+    private var _binding: FragmentThirdBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    //onview created
-    //oncreateview dapat lahat ito
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        //need ito if fragment
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentThirdBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -34,11 +30,8 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonFirst.setOnClickListener {
-         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-//          val tst = "hello world"
-//            binding.textviewFirst.text = tst
-
+        binding.buttonThird.setOnClickListener {
+            findNavController().navigate(R.id.action_ThirdFragment_to_FirstFragment)
         }
     }
 
@@ -46,4 +39,5 @@ class FirstFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
