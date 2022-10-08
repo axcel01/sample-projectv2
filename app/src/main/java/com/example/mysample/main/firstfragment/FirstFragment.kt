@@ -1,12 +1,15 @@
-package com.example.mysample
+package com.example.mysample.main.firstfragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.mysample.R
 import com.example.mysample.databinding.FragmentFirstBinding
+import com.example.mysample.main.MainViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -14,7 +17,7 @@ import com.example.mysample.databinding.FragmentFirstBinding
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
-
+    private val viewModel by activityViewModels<MainViewModel>()
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -35,10 +38,9 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonFirst.setOnClickListener {
-         findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
 //          val tst = "hello world"
 //            binding.textviewFirst.text = tst
-
+            viewModel.navigateToSecond();
         }
     }
 
